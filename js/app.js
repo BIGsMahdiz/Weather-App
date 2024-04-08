@@ -64,7 +64,7 @@ const locationHandler = () => {
   if (navigator.geolocation) {
     navigator.geolocation.getCurrentPosition(successCallback, errorCallback);
   } else {
-    alert("your browser does not support geolocation");
+    alert("your browser does not support geolocation!");
   }
 };
 
