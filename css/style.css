@@ -117,3 +117,29 @@ margin-bottom: 20px;
   color: var(--color-secondary);
   margin-left: 5px;
 }
+
+#forecast {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+#forecast div {
+  width: 180px;
+  padding: 20px 10px 30px;
+  text-align: center;
+  border-radius: 20px;
+  box-shadow: var(--color-secondary) 0px 25px 80px -25px;
+}
+
+#forecast h3 {
+  color:  var(--color-primary);
+  margin-bottom: 30px;
+}
+
+#forecast p {
+  margin-bottom: 10px;
+}
+#forecast span {
+  color: var(--color-secondary);
+}
