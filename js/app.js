@@ -1,24 +1,17 @@
 import getWeatherData from "../utils/httpReq.js";
-import { showModal, removeModal } from "../utils/modal.js";
-
-const DAYS = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
+import { showModal } from "../utils/modal.js";
+import getWeekDay from "../utils/customeDate.js";
 
 const saerchInput = document.querySelector("input");
 const saerchButton = document.querySelector("button");
 const weatherContainer = document.getElementById("weather");
 const forecastContainer = document.getElementById("forecast");
 const locationIcon = document.getElementById("location");
+const loader = document.getElementById("loader");
 
 const renderCurrentWeather = (data) => {
   if (!data) return;
+  loader.style.display = "block";
 
   const weatherJSX = `
     <h1>${data.name}, ${data.sys.country}</h1>
@@ -37,12 +30,9 @@ const renderCurrentWeather = (data) => {
   weatherContainer.innerHTML = weatherJSX;
 };
 
-const getWeekDay = (date) => {
-  return DAYS[new Date(date * 1000).getDay()];
-};
-
 const renderForecastWeather = (data) => {
   if (!data) return;
+  loader.style.display = "block";
 
   forecastContainer.innerHTML = "";
   data = data.list.filter((obj) => obj.dt_txt.endsWith("12:00:00"));
@@ -62,6 +52,7 @@ const renderForecastWeather = (data) => {
 };
 
 const saerchHandler = async () => {
+  loader.style.display = "block";
   const cityName = saerchInput.value;
 
   if (!cityName) {

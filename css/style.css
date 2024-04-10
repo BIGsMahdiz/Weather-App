@@ -21,7 +21,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  padding: 100px 0 200px;
+  padding: 100px 10px 200px;
   border-radius: 0 0 40px 40px;
   background: linear-gradient(
     13deg,
@@ -122,6 +122,7 @@ body {
   display: flex;
   justify-content: space-between;
   margin-bottom: 20px;
+  flex-wrap: wrap;
 }
 
 #forecast div {
@@ -176,4 +177,45 @@ body {
 #modal p {
   margin-top: 40px;
   color: var(--color-error);
+}
+
+#loader {
+  width: 80px;
+  padding: 8px;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  background: var(--color-primary);
+  display: none;
+  --_m: conic-gradient(#0000 10%, #000), linear-gradient(#000 0 0) content-box;
+  -webkit-mask: var(--_m);
+  mask: var(--_m);
+  -webkit-mask-composite: source-out;
+  mask-composite: subtract;
+  animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+@media (max-width: 500px) {
+  #weather {
+    width: 95%;
+  }
+
+  #weather #info {
+    flex-direction: column;
+  }
+
+  #forecast {
+    width: 95%;
+    margin: auto;
+    justify-content: center;
+  }
+
+  #forecast > div {
+    width: 60%;
+    margin-bottom: 40px;
+  }
 }
